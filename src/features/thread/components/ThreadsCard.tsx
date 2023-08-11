@@ -1,7 +1,8 @@
 import { Card, CardHeader, CardBody, CardFooter,Box,Flex,Text,Heading,IconButton,Avatar,Image,Button,Input, FormControl } from '@chakra-ui/react'
 // import {axios}  from "axios"
 import data from "../../../utils/fakedata.json";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { API } from "../../../lib/api";
 
 interface ThreadCard{
     author_pictures? : string,
@@ -22,17 +23,29 @@ interface ThreadCard{
 // }
 
 
-export default function ThreadCard(props : ThreadCard) {
+export default function ThreadCard() {
   
   
-  const [alldata] = useState(data)
- 
+  const [threads, setThreads] = useState<ThreadCard[]>()
 
+  async function fetch() {
+    const response = await API.get("/threads")
+    setThreads(response.data)
+    console.log(response.data,'ini dataa')
+  }
+
+  useEffect(() => {
+    fetch()
+  }, [] )
+
+  
+  
     return(
       <>
       {
-        alldata.map((item) => {
+        threads?.map((item) => {
           return (
+            <>
             <Card mt={"10px"} >
             <CardHeader>
               <Flex>
@@ -84,6 +97,7 @@ export default function ThreadCard(props : ThreadCard) {
               </Button>
             </CardFooter>
           </Card>
+          </>
           )
         })
       }
