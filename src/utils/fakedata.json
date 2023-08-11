@@ -1,0 +1,32 @@
+[
+    {
+        "author_pictures" : "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80", 
+        "author_full_name" : "Baldur", 
+        "author_username": "bagza", 
+        "posted_at": "4h", 
+        "content" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sapiente eum, enim ratione praesentium quos totam! Voluptatum tempora minus officiis assumenda labore dolor, ullam saepe officia quo ipsa esse? Libero." ,
+        "likes_count" : 99999999,  
+        "replies_count": 20,  
+        "image" : "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
+    },
+    {
+        "author_pictures" : "https://images.unsplash.com/photo-1578489758854-f134a358f08b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGh1bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60", 
+        "author_full_name" : "Athena", 
+        "author_username": "Athena992", 
+        "posted_at": "8h", 
+        "content" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sapiente eum, enim ratione praesentium quos totam! Voluptatum tempora minus officiis assumenda labore dolor, ullam saepe officia quo ipsa esse? Libero." ,
+        "likes_count" : 200,  
+        "replies_count": 50,  
+        "image" : "https://images.unsplash.com/photo-1578489758854-f134a358f08b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGh1bWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"
+    },
+    {
+        "author_pictures" : "https://images.unsplash.com/photo-1691288314757-00221e877188?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTF8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=600&q=60", 
+        "author_full_name" : "flower", 
+        "author_username": "flower2", 
+        "posted_at": "8h", 
+        "content" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit sapiente eum, enim ratione praesentium quos totam! Voluptatum tempora minus officiis assumenda labore dolor, ullam saepe officia quo ipsa esse? Libero." ,
+        "likes_count" : 200,  
+        "replies_count": 50,  
+        "image" : "https://images.unsplash.com/photo-1691288314757-00221e877188?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTF8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=600&q=60"
+    }
+]
