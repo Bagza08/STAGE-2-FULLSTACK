@@ -17,11 +17,12 @@
       "joi": "^17.9.2",
       "nodemon": "^3.0.1",
       "pg": "^8.4.0",
+      "react-router-dom": "^6.15.0",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.17"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
+      "start": "nodemon src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:generate": "npx typeorm-ts-node-commonjs migration:generate src/migration/Mymigration -d src/data-source.ts",
       "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
