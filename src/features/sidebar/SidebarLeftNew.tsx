@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardBody, GridItem, Heading, Link, Stack,Image,Text, Button } from '@chakra-ui/react'
+import { Box, Text, Button } from '@chakra-ui/react'
 import { BsHeart, BsHouseDoor , BsSearch,BsFillPersonFill,BsFillDoorOpenFill} from "react-icons/bs";
 
 export default function SidebarLeftNew() {
@@ -10,7 +10,7 @@ export default function SidebarLeftNew() {
                 <Text display={"flex"} flexDirection={"row"} gap={"3"} alignItems={"center"} fontSize={"20px"} color={"grey.900"} mb={"20px"}><BsSearch/> Search</Text>
                 <Text display={"flex"} flexDirection={"row"} gap={"3"} alignItems={"center"} fontSize={"20px"} color={"grey.900"} mb={"20px"}><BsHeart/> Follows</Text>
                 <Text display={"flex"} flexDirection={"row"} gap={"3"} alignItems={"center"} fontSize={"20px"} color={"grey.900"} mb={"20px"}><BsFillPersonFill/> Profile</Text>
-                <Button mt={"20px"} borderStyle={"none"} color={"white"} bg={"green"} w={"100%"} borderRadius={"20px"}>Create Post</Button>
+                <Button mt={"20px"} colorScheme='green' borderStyle={"none"} color={"white"} bg={"green"} w={"100%"} borderRadius={"20px"}>Create Post</Button>
                 <Text mt={"200px"} display={"flex"} flexDirection={"row"} gap={"3"} alignItems={"center"} fontSize={"20px"} color={"grey.900"} mb={"20px"}><BsFillDoorOpenFill/> Logout</Text>
             </Box>
         </>

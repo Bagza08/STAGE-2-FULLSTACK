@@ -1,5 +1,5 @@
 import {
-    CardBody,Card,Image,Stack,  CardFooter ,Box, Heading, Text, Divider, ButtonGroup,Button, GridItem ,Avatar, AvatarBadge, AvatarGroup,Flex
+    CardBody,Card,Image,Stack,Box, Heading, Text,Button,Avatar,Flex
 
   } from '@chakra-ui/react'
 

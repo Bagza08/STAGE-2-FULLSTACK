@@ -1,14 +1,12 @@
-import { Card, CardHeader, CardBody, CardFooter,Box,Flex,Text,Heading,IconButton,Avatar,Image,Button,Input, FormControl } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter,Box,Flex,Text,Heading,IconButton,Avatar,Image,Button } from '@chakra-ui/react'
 // import {axios}  from "axios"
-import data from "../../../utils/fakedata.json";
-import { useEffect, useState } from 'react';
-import { API } from "../../../lib/api";
+import {useState} from "react"
 
-interface ThreadCard{
-    author_pictures? : string,
-    author_full_name? : string,
-    author_username? : string,
-    //user : User
+export interface ThreadCards{
+    // author_pictures? : string,
+    // author_full_name? : string,
+    // author_username? : string,
+    user ?: User,
     posted_at? : string,
     content? : string,
     image? : string,
@@ -16,45 +14,29 @@ interface ThreadCard{
     replies_count?: number,
 }
 
-// interface User{
-//     author_pictures : string,
-//     author_full_name : string,
-//     author_username : string
-// }
+export interface User{
+    profile_picture : string,
+    full_name : string,
+    username : string,
+}
 
 
-export default function ThreadCard() {
-  
-  
-  const [threads, setThreads] = useState<ThreadCard[]>()
 
-  async function fetch() {
-    const response = await API.get("/threads")
-    setThreads(response.data)
-    console.log(response.data,'ini dataa')
-  }
+export default function ThreadCard(props:ThreadCards) {
 
-  useEffect(() => {
-    fetch()
-  }, [] )
+  const [showImage, setShowImage] = useState<boolean>(true)
 
-  
-  
     return(
       <>
-      {
-        threads?.map((item) => {
-          return (
-            <>
-            <Card mt={"10px"} >
+      <Card mt={"10px"} >
             <CardHeader>
               <Flex>
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                  <Avatar objectFit={"cover"} name='Segun Adebayo' src={item.author_pictures} />
+                  <Avatar objectFit={"cover"} name='Segun Adebayo' src={props.user?.profile_picture} />
                   <Box>
-                    <Heading size='sm' >{item.author_full_name}</Heading>
+                    <Heading size='sm'>{props.user?.full_name}</Heading>
                     <Box>
-                      <Text color={'grey'}>@{item.author_username} &#9679; {item.posted_at}</Text>
+                      <Text color={'grey'}>@{props.user?.username} &#9679; {props.posted_at}</Text>
                     </Box>
                   </Box>
                 </Flex>
@@ -68,14 +50,20 @@ export default function ThreadCard() {
             </CardHeader>
             <CardBody>
               <Text>
-              {item.content}
+              {props.content}
               </Text>
             </CardBody>
-            <Image
-              objectFit='cover'
-              src={item.image}
-              alt='Chakra UI'
-            />
+
+            {
+              showImage && (
+                <Image
+                objectFit='cover'
+                src={props.image}
+                onError={() => setShowImage(false)}
+                alt='Chakra UI'
+              />   
+              )
+            }
 
             <CardFooter
               justify='space-between'
@@ -87,20 +75,25 @@ export default function ThreadCard() {
               }}
             >
               <Button flex='1' variant='ghost'>
-              {item.likes_count} Like
+              {props.likes_count} Like
               </Button>
               <Button flex='1' variant='ghost'>
-              {item.replies_count} Comment
+              {props.replies_count} Comment
               </Button>
               <Button flex='1' variant='ghost'>
                 Share
               </Button>
             </CardFooter>
           </Card>
+      {/* {
+        threads?.map((item) => {
+          return (
+            <>
+            
           </>
           )
         })
-      }
+      } */}
       
       </>
 
