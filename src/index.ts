@@ -24,7 +24,7 @@ AppDataSource.initialize().then(async () => {
 
 
     const app = express()
-    const port = 5000
+    const port = 2000
 
     app.use(cors())
 
