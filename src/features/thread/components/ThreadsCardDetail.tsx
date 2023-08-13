@@ -14,29 +14,29 @@ import {
 } from "@chakra-ui/react";
 // import {axios}  from "axios"
 import { useState } from "react";
+import { useHook } from "../../../hooks/useHook";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-export interface ThreadCards {
-  id?: number;
-  user?: User;
-  posted_at?: string;
-  content?: string;
-  image?: string;
-  likes_count?: number;
-  replies_count?: number;
-}
-
-export interface User {
-  profile_picture: string;
-  full_name: string;
-  username: string;
-}
-
-export default function ThreadCard(props: ThreadCards) {
+export default function ThreadCardDetail() {
+  const { detailThreads } = useHook();
   const [showImage, setShowImage] = useState<boolean>(true);
 
-  return (
+  return detailThreads ? (
     <>
+      <Box p={"10px"} mt={"10px"}>
+        <Link to={"/"}>
+          <Button
+            bg={"green"}
+            borderStartRadius={"100px"}
+            colorScheme="gray"
+            color={"white"}
+          >
+            <BsFillArrowLeftCircleFill />
+            <Text ml={"10px"}>Back</Text>
+          </Button>
+        </Link>
+      </Box>
       <Card mt={"10px"}>
         <CardHeader>
           <Flex>
@@ -44,13 +44,14 @@ export default function ThreadCard(props: ThreadCards) {
               <Avatar
                 objectFit={"cover"}
                 name="Segun Adebayo"
-                src={props.user?.profile_picture}
+                src={detailThreads.user?.profile_picture}
               />
               <Box>
-                <Heading size="sm">{props.user?.full_name}</Heading>
+                <Heading size="sm">{detailThreads.user?.full_name}</Heading>
                 <Box>
                   <Text color={"grey"}>
-                    @{props.user?.username} &#9679; {props.posted_at}
+                    @{detailThreads.user?.username} &#9679;{" "}
+                    {detailThreads.posted_at}
                   </Text>
                 </Box>
               </Box>
@@ -64,13 +65,13 @@ export default function ThreadCard(props: ThreadCards) {
           </Flex>
         </CardHeader>
         <CardBody>
-          <Text>{props.content}</Text>
+          <Text>{detailThreads.content}</Text>
         </CardBody>
 
         {showImage && (
           <Image
             objectFit="cover"
-            src={props.image}
+            src={detailThreads.image}
             onError={() => setShowImage(false)}
             alt="Chakra UI"
           />
@@ -86,14 +87,11 @@ export default function ThreadCard(props: ThreadCards) {
           }}
         >
           <Button flex="1" variant="ghost">
-            {props.likes_count} Like
+            {detailThreads.likes_count} Like
           </Button>
-
-          <Link to={"/threaddetail/" + props.id}>
-            <Button flex="1" variant="ghost">
-              {props.replies_count} Comment
-            </Button>
-          </Link>
+          <Button flex="1" variant="ghost">
+            {detailThreads.replies_count} Comment
+          </Button>
           <Button flex="1" variant="ghost">
             Share
           </Button>
@@ -109,5 +107,7 @@ export default function ThreadCard(props: ThreadCards) {
         })
       } */}
     </>
+  ) : (
+    <h1>gagal</h1>
   );
 }
