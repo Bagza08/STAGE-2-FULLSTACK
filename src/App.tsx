@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import IndexPage from "./pages";
 import DetailPage from "./pages/DetailPage";
+import Login from "./pages/login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<IndexPage />} />
           <Route path="/threaddetail/:id" element={<DetailPage />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>
