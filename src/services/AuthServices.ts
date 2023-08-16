@@ -72,7 +72,7 @@ class AuthServices {
         email: ckemail.email,
         password: ckemail.password,
       });
-      const token = jwt.sign({ user }, "ini bagian secreet", {
+      const token = jwt.sign({ user }, "bagzaganteng", {
         expiresIn: "1hr",
       });
 
