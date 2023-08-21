@@ -15,8 +15,10 @@ import {
 } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
+import { useLogin } from "../hooks/loginHook";
 
 export default function Login() {
+  const { handleLogin, handchange } = useLogin();
   return (
     <Flex
       minH={"100vh"}
@@ -40,11 +42,11 @@ export default function Login() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" onChange={handchange} name="email" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input type="password" onChange={handchange} name="password" />
             </FormControl>
             <Stack spacing={5}>
               <Stack
@@ -56,6 +58,7 @@ export default function Login() {
                 <Text color={"green"}>Forgot password?</Text>
               </Stack>
               <Button
+                onClick={handleLogin}
                 borderRadius={"20px"}
                 bg={"green"}
                 color={"white"}

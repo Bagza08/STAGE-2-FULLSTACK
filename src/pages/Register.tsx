@@ -14,13 +14,14 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useRegister } from "../hooks/registerHook";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { handleRegister, handchange } = useRegister();
   return (
     <Flex
       minH={"100vh"}
@@ -28,7 +29,7 @@ export default function Register() {
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
     >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={5} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
             Create Account
@@ -50,16 +51,24 @@ export default function Register() {
             </HStack> */}
             <FormControl id="firstName" isRequired>
               <FormLabel>Full Name</FormLabel>
-              <Input type="text" />
+              <Input type="text" onChange={handchange} name="full_name" />
+            </FormControl>
+            <FormControl id="firstName" isRequired>
+              <FormLabel>Username</FormLabel>
+              <Input type="text" onChange={handchange} name="username" />
             </FormControl>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" onChange={handchange} name="email" />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? "text" : "password"} />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  onChange={handchange}
+                  name="password"
+                />
                 <InputRightElement h={"full"}>
                   <Button
                     variant={"ghost"}
@@ -74,6 +83,7 @@ export default function Register() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+                onClick={handleRegister}
                 borderRadius={"30px"}
                 loadingText="Submitting"
                 size="lg"
@@ -86,10 +96,18 @@ export default function Register() {
                 Create Account
               </Button>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user? <Link color={"green"}>Login</Link>
-              </Text>
+            <Stack
+              pt={2}
+              align={"center"}
+              display={"flex"}
+              flexDirection={"row"}
+              justifyContent={"center"}
+              gap={2}
+            >
+              <Text align={"center"}>Already a user?</Text>
+              <Link to={"/login"}>
+                <Text color={"green"}>Login</Text>
+              </Link>
             </Stack>
           </Stack>
         </Box>
