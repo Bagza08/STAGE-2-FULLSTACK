@@ -19,6 +19,6 @@ router.post("/thread/update/:id", ThreadController.update);
 //auth
 router.post("/auth/register", AuthController.register);
 router.post("/auth/login", AuthController.login);
-router.get("/ckauth", authenticate, AuthController.check);
+router.get("/check", authenticate, AuthController.check);
 
 export default router;
