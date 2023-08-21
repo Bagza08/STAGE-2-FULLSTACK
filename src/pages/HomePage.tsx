@@ -8,8 +8,6 @@ import {
 } from "@chakra-ui/react";
 import ThreadCard from "../features/thread/components/ThreadsCard";
 import { useHook } from "../hooks/useHook";
-import { Form } from "react-router-dom";
-
 function HomePage() {
   const { thread, fetchCreatePost, formData, handchange } = useHook();
 

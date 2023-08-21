@@ -13,7 +13,7 @@ function App() {
   async function AuthCheck() {
     try {
       setAuthToken(localStorage.token);
-      const response = await API.get("/ckauth");
+      const response = await API.get("/check");
       console.log("auth cek berhasil", response);
       setIsLoading(false);
     } catch (err) {
