@@ -1,16 +1,16 @@
 //import { Console } from "console";
-import { AppDataSource } from "./data-source"
+import { AppDataSource } from "./data-source";
 //import { Thread } from "./entities/Thread"
 import * as express from "express";
 import { Request, Response } from "express";
 import router from "./route";
-import * as cors from 'cors';
+import * as cors from "cors";
 
-AppDataSource.initialize().then(async () => {
-
+AppDataSource.initialize()
+  .then(async () => {
     // console.log("Inserting a new user into the database...")
     // const user = new Thread()
-    // user.content = "Timber"  
+    // user.content = "Timber"
     // user.image = "Saw"
     // user.id = 25
     // await AppDataSource.manager.save(user)
@@ -22,22 +22,20 @@ AppDataSource.initialize().then(async () => {
 
     // console.log("Here you can setup and run express / fastify / any other framework.")
 
+    const app = express();
+    const port = 2000;
 
-    const app = express()
-    const port = 2000
+    app.use(cors());
 
-    app.use(cors())
+    app.use(express.json());
+    app.use("/api/v1/", router);
 
-    app.use(express.json())
-    app.use("/api/v1/", router)
-
-    app.get("/", (req:Request, res: Response) => {
-        res.send("hallo world!")
-    })
+    app.get("/", (req: Request, res: Response) => {
+      res.send("hallo world!");
+    });
 
     app.listen(port, () => {
-        console.log(`server is running on http://localhost:${port}`)
-    })
-
-    
-}).catch(error => console.log(error))
+      console.log(`server is running on http://localhost:${port}`);
+    });
+  })
+  .catch((error) => console.log(error));
