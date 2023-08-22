@@ -15,10 +15,11 @@ import {
 // import {axios}  from "axios"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { IUser } from "../../../interfaces/user";
 
-export interface ThreadCards {
+export interface IThreadCards {
   id?: number;
-  user?: User;
+  user?: IUser;
   posted_at?: string;
   content?: string;
   image?: string;
@@ -26,13 +27,7 @@ export interface ThreadCards {
   replies_count?: number;
 }
 
-export interface User {
-  profile_picture: string;
-  full_name: string;
-  username: string;
-}
-
-export default function ThreadCard(props: ThreadCards) {
+export default function ThreadCard(props: IThreadCards) {
   const [showImage, setShowImage] = useState<boolean>(true);
 
   return (

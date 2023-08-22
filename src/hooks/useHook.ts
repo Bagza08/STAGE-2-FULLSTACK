@@ -1,11 +1,11 @@
 import { Await, useParams } from "react-router-dom";
 import { API } from "../lib/API";
-import { ThreadCards } from "./../features/thread/components/ThreadsCard";
+import { IThreadCards } from "./../features/thread/components/ThreadsCard";
 import { useState, useEffect } from "react";
 
 export function useHook() {
   //fetchData
-  const [thread, setThreads] = useState<ThreadCards[]>([]);
+  const [thread, setThreads] = useState<IThreadCards[]>([]);
 
   async function fetch() {
     const response = await API.get("/threads");
@@ -20,7 +20,7 @@ export function useHook() {
   //detail threads
   const { id } = useParams();
 
-  const [detailThreads, setDetailThreads] = useState<ThreadCards | null>(null);
+  const [detailThreads, setDetailThreads] = useState<IThreadCards | null>(null);
 
   async function getThread() {
     try {

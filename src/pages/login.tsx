@@ -16,9 +16,14 @@ import {
 
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/loginHook";
+import { useSelector } from "react-redux";
+import { RootState } from "../stores/types/rootState";
 
 export default function Login() {
-  const { handleLogin, handchange } = useLogin();
+  const { handleLogin, handChange } = useLogin();
+
+  // const auth = useSelector((state: RootState) => state.auth);
+
   return (
     <Flex
       minH={"100vh"}
@@ -39,14 +44,19 @@ export default function Login() {
           boxShadow={"lg"}
           p={8}
         >
+          {/* <Button
+            onClick={() => console.log("ini data user dari redux:", auth)}
+          >
+            LIHAT USER REDUX KLIK DISINI
+          </Button> */}
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" onChange={handchange} name="email" />
+              <Input type="email" onChange={handChange} name="email" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" onChange={handchange} name="password" />
+              <Input type="password" onChange={handChange} name="password" />
             </FormControl>
             <Stack spacing={5}>
               <Stack

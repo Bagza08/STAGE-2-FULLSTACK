@@ -1,17 +1,11 @@
 import { ChangeEvent, useState } from "react";
 import { API } from "../lib/API";
 import { useNavigate } from "react-router-dom";
-
-interface Register {
-  username: string;
-  full_name: string;
-  email: string;
-  password: string;
-}
+import { IRegister } from "../interfaces/user";
 
 export function useRegister() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<Register>({
+  const [formData, setFormData] = useState<IRegister>({
     username: "",
     full_name: "",
     email: "",

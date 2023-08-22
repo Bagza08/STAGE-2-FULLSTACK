@@ -1,20 +1,19 @@
 import { ChangeEvent, useState } from "react";
 import { API, setAuthToken } from "../lib/API";
 import { useNavigate } from "react-router-dom";
-
-interface Login {
-  email: string;
-  password: string;
-}
+import { ILogin } from "../interfaces/user";
+import { AUTH_LOGIN } from "../stores/rootReducer";
+import { useDispatch } from "react-redux";
 
 export function useLogin() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<Login>({
+  const dispach = useDispatch();
+  const [formData, setFormData] = useState<ILogin>({
     email: "",
     password: "",
   });
 
-  const handchange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handChange = (event: ChangeEvent<HTMLInputElement>) => {
     //const { name, value } = event.target;
     //console.log(name);
     setFormData({
@@ -26,10 +25,11 @@ export function useLogin() {
   async function handleLogin() {
     try {
       const response = await API.post("/auth/login", formData);
-      console.log("login berhasil yeyyyyyyyyy!!", response);
-      alert("Berhasil Login!");
-      localStorage.setItem("token", response.data.token);
-      setAuthToken(localStorage.token);
+      dispach(AUTH_LOGIN(response.data));
+      console.log(response.data);
+      // console.log("login berhasil yeyyyyyyyyy!!", response);
+      // alert("Berhasil Login!");
+      // localStorage.setItem("token", response.data.token);
       navigate("/");
     } catch (error) {
       alert("LOGIN GAGAL SILAHKAN LOGIN KEMBALI!");
@@ -37,5 +37,5 @@ export function useLogin() {
     }
   }
 
-  return { useLogin, handleLogin, handchange, formData };
+  return { useLogin, handleLogin, handChange, formData };
 }
