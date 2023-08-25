@@ -85,6 +85,7 @@ class AuthServices {
     }
   }
 
+  //check
   async check(req: Request, res: Response) {
     try {
       const loginSeasson = res.locals.loginSeasson;
@@ -100,6 +101,16 @@ class AuthServices {
       });
     } catch (error) {
       return res.status(500).json("server error");
+    }
+  }
+
+  //logout
+  async logout(req: Request, res: Response) {
+    try {
+      return res.status(200).json({ messege: "Logout Berhasil!!" });
+    } catch (error) {
+      console.log("Log out gagal", error);
+      return res.status(500).json("server terjadi kesalahan");
     }
   }
 }

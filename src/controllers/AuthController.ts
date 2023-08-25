@@ -11,6 +11,9 @@ class AuthController {
   check(req: Request, res: Response) {
     AuthServices.check(req, res);
   }
+  logout(req: Request, res: Response) {
+    AuthServices.logout(req, res);
+  }
 }
 
 export default new AuthController();
