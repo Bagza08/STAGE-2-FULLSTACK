@@ -7,8 +7,10 @@ import {
   BsFillDoorOpenFill,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useLogin } from "../../hooks/loginHook";
 
 export default function SidebarLeftNew() {
+  const { handleLogout } = useLogin();
   return (
     <>
       <Box position={"fixed"} h={"1vh"} w={"22%"} pt={"10px"} px={"50px"}>
@@ -71,24 +73,21 @@ export default function SidebarLeftNew() {
         >
           Create Post
         </Button>
-        <Link to={"/login"}>
-          <Text
-            onClick={() => {
-              localStorage.removeItem("token");
-            }}
-            cursor={"pointer"}
-            mt={"200px"}
-            display={"flex"}
-            flexDirection={"row"}
-            gap={"3"}
-            alignItems={"center"}
-            fontSize={"20px"}
-            color={"grey.900"}
-            mb={"20px"}
-          >
-            <BsFillDoorOpenFill /> Logout
-          </Text>
-        </Link>
+
+        <Text
+          onClick={handleLogout}
+          cursor={"pointer"}
+          mt={"200px"}
+          display={"flex"}
+          flexDirection={"row"}
+          gap={"3"}
+          alignItems={"center"}
+          fontSize={"20px"}
+          color={"grey.900"}
+          mb={"20px"}
+        >
+          <BsFillDoorOpenFill /> Logout
+        </Text>
       </Box>
     </>
   );

@@ -1,5 +1,5 @@
 import { Await, useParams } from "react-router-dom";
-import { API } from "../lib/API";
+import { API, setAuthToken } from "../lib/API";
 import { IThreadCards } from "./../features/thread/components/ThreadsCard";
 import { useState, useEffect } from "react";
 
@@ -41,8 +41,32 @@ export function useHook() {
     image: "",
   });
 
+  const [contentData, setContentData] = useState("");
+  const handleContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setContentData(value);
+  };
+
+  const [imageData, setImageData] = useState<string | Blob>();
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      setImageData(file);
+    }
+  };
+
   const fetchCreatePost = async (event: React.FormEvent) => {
     event.preventDefault();
+    setAuthToken(localStorage.token);
+    const formData = new FormData();
+    formData.append("content", contentData);
+    if (imageData !== null) {
+      formData.append("image", imageData as File);
+    } else {
+      formData.append("image", "");
+    }
+
     try {
       const response = await API.post("/thread/create", formData);
       console.log("error", response.data);
@@ -67,5 +91,7 @@ export function useHook() {
     handchange,
     formData,
     setFormData,
+    handleImageChange,
+    handleContentChange,
   };
 }

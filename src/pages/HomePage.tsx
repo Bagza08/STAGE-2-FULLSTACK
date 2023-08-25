@@ -9,7 +9,13 @@ import {
 import ThreadCard from "../features/thread/components/ThreadsCard";
 import { useHook } from "../hooks/useHook";
 function HomePage() {
-  const { thread, fetchCreatePost, formData, handchange } = useHook();
+  const {
+    thread,
+    fetchCreatePost,
+    formData,
+    handleImageChange,
+    handleContentChange,
+  } = useHook();
 
   return (
     <>
@@ -37,12 +43,22 @@ function HomePage() {
               flexDirection={"row"}
             >
               <Input
-                onChange={handchange}
+                onChange={handleContentChange}
                 name="content"
-                value={formData.content}
+                //value={formData.content}
                 placeholder="What is happening?!"
                 border={"none"}
                 width={"100%"}
+                type="text"
+              />
+              <Input
+                onChange={handleImageChange}
+                type="file"
+                name="image"
+                //value={formData.content}
+                placeholder="What is happening?!"
+                border={"none"}
+                width={"50%"}
               />
               <Button
                 colorScheme="green"

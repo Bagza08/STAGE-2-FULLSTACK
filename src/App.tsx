@@ -63,6 +63,7 @@ function App() {
             <Route path="/" element={<IndexPage />} />
             <Route path="/threaddetail/:id" element={<DetailPage />} />
           </Route>
+
           <Route path="/" element={<IsNotLogin />}>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

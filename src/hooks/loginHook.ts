@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { API, setAuthToken } from "../lib/API";
 import { useNavigate } from "react-router-dom";
 import { ILogin } from "../interfaces/user";
-import { AUTH_LOGIN } from "../stores/rootReducer";
+import { AUTH_LOGIN, AUTH_LOGOUT } from "../stores/rootReducer";
 import { useDispatch } from "react-redux";
 
 export function useLogin() {
@@ -37,5 +37,21 @@ export function useLogin() {
     }
   }
 
-  return { useLogin, handleLogin, handChange, formData };
+  async function handleLogout() {
+    //isloading()
+    try {
+      const response = await API.get("/auth/logout");
+      dispach(AUTH_LOGOUT(response.data));
+      //console.log(response.data);
+      // console.log("login berhasil yeyyyyyyyyy!!", response);
+      // alert("Berhasil Login!");
+      // localStorage.setItem("token", response.data.token);
+      navigate("/login");
+    } catch (error) {
+      alert("LOGOUT GAGAL!");
+      console.log("LOGIN GAGAL!!", error);
+    }
+  }
+
+  return { useLogin, handleLogin, handChange, formData, handleLogout };
 }

@@ -29,6 +29,7 @@ export const authSlice = createSlice({
         profile_picture: payload.user.profile_picture,
       };
 
+      console.log("ini user bangsat", user);
       return user;
     },
     AUTH_CHECK: (_, action) => {
@@ -50,6 +51,9 @@ export const authSlice = createSlice({
     AUTH_ERROR: () => {
       localStorage.removeItem("token");
     },
-    AUTH_LOGOUT: () => {},
+    AUTH_LOGOUT: () => {
+      localStorage.removeItem("token");
+      return initialAuthState;
+    },
   },
 });
